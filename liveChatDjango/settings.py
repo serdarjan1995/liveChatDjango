@@ -25,7 +25,7 @@ SECRET_KEY = 'p89yji6nb=8^)8@v124dc*sjsg-$3*=&o2+owd*6k7^5#_d)j7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'liveChat',
 ]
 
 MIDDLEWARE = [
