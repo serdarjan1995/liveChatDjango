@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx-webserver
+    ports:
+      - "8080:80"
+    volumes:
+      - ./static:/var/www/html/static
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - django
+    depends_on:
+      - django
+
+  django:
+    image: live-chat-django:1.0
+    container_name: live-chat-django
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    restart: always
+    networks:
+      - django
+
+networks:
+  django:
